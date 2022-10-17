@@ -6,8 +6,12 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:9010/eureka
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
   admin-paths:
     paths:
       - uri: "/user"
