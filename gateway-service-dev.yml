@@ -13,20 +13,12 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: user-service
-          uri: lb://user-service
+        - id: operation-service
+          uri: lb://operation-service
           predicates:
-            - Path=/user/**
+            - Path=/operations/**
           filters:
             - AuthFilter
-        - id: car-service
-          uri: lb://car-service
-          predicates:
-            - Path=/car/**
-        - id: bike-service
-          uri: lb://bike-service
-          predicates:
-            - Path=/bike/**
         - id: auth-service
           uri: lb://auth-service
           predicates:

@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+    url: "jdbc:h2:mem:auth;"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+server:
+  port: 9060
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-service-svc:9010/eureka/
+feign:
+  circuitbreaker:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  admin-paths:
+    paths:
+      - uri: "/user"
+        method: "POST"
+      - uri: "/user/savecar/{1}[1-9]+[0-9]*"
+        method: "POST"
+      - uri: "/user/savebike/{1}[1-9]+[0-9]*"
+        method: "POST"

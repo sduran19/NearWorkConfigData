@@ -3,7 +3,7 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
-    url: "jdbc:h2:mem:user;"
+    url: "jdbc:h2:mem:operation;"
   h2:
     console:
       enabled: true
@@ -13,25 +13,11 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
-  boot:
-    admin:
-      client:
-        url: http://admin-service-svc:9020
-        username: admin
-        password: admin
-        instance:
-          service-base-url: http://user-service:9060
-          name: User API Service
-          metadata:
-            user.name: admin
-            user.password: admin
 server:
   servlet:
-    context-path: /users
-  port: 9060
+    context-path: /operations
+  port: 9070
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://eureka-service-svc:9010/eureka/
